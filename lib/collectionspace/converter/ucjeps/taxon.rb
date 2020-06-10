@@ -46,22 +46,22 @@ module CollectionSpace
 
         def self.map_ucjeps(xml, attributes) 
           pairs = {
-            'taxonMajorGroup' => 'taxonmajorgroup'
+            'taxonmajorgroup' => 'taxonMajorGroup'
           }
           pairs_transforms = {
-            'taxonMajorGroup' => {'vocab' => 'taxonMajorGroups'}, 
+            'taxonmajorgroup' => {'vocab' => 'taxonmajorgroups'}, 
           }
           CSXML::Helpers.add_pairs(xml, attributes, pairs, pairs_transforms)
         end # map ucjeps
         
         def self.map_extension(xml, attributes)
           pairs = {
-            'taxonBasionym' => 'taxonbasionym',
+            'taxonbasionym' => 'taxonBasionym',
             'family' => 'family'
           }
 
           pairs_transforms = {
-            'taxonBasionym' => {'authority' => ['taxonauthorities', 'taxon']},
+            'taxonbasionym' => {'authority' => ['taxonauthorities', 'taxon']},
             'family' => {'authority' => ['taxonauthorities', 'taxon']}
           }
 
@@ -71,18 +71,18 @@ module CollectionSpace
           # related term group list
 
           relatedterm_data = {
-            'relatedTerm' => 'relatedterm',
-            'relatedTermType' => 'relatedtermtype',
-            'relatedTermSource' => 'relatedtermsource',
-            'relatedTermSourceDetail' => 'relatedtermsourcedetail'
+            'relatedterm' => 'relatedTerm',
+            'relatedtermtype' => 'relatedTermType',
+            'relatedtermsource' => 'relatedTermSource',
+            'relatedtermsourcedetail' => 'relatedTermSourceDetail'
           }
 
           relatedterm_transforms = {
-            'relatedTerm' => {'authority' => ['taxonauthorities', 'taxon']}, 
-            'relatedTermType' => {'vocab' => 'taxonRelatedTermTypes'}
+            'relatedterm' => {'authority' => ['taxonauthorities', 'taxon']}, 
+            'relatedtermtype' => {'vocab' => 'taxonrelatedtermtypes'}
           }
 
-          CSXML.add_group_list(xml, 'relatedTerm', relatedterm_data)
+          CSXML.add_single_level_group_list(xml, attributes, 'relatedTerm', relatedterm_data, relatedterm_transforms)
 
 
         #   <Field name="relatedTermGroupList" subpath="ns2:taxon_naturalhistory">
