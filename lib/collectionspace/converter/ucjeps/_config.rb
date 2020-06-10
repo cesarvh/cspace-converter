@@ -1,6 +1,6 @@
 module CollectionSpace
   module Converter
-    module UCJEPSAnthro
+    module UCJEPS
       include Default
     end
   end
